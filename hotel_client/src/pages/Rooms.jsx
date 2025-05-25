@@ -16,6 +16,7 @@ export default function Rooms() {
             <ul>
                 {rooms.map(room => (
                     <li key={room.Id}>
+                        <img src={`http://localhost:5007${room.image}`} alt="room" width="200" />
                         Number {room.number} Type {room.type } Price {room.pricePerNight} 
                     </li>
                 ))}
