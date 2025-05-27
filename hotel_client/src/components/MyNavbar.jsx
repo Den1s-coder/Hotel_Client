@@ -16,7 +16,7 @@ const MyNavbar = () => {
             <Container>
                 <BootstrapNavbar.Brand as={Link} to="/">Готель</BootstrapNavbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link href="/rooms">Кімнати</Nav.Link>
+                    <Nav.Link as={Link} to="/rooms">Кімнати</Nav.Link>
                     {userEmail && <Nav.Link as={Link} to="/MyBookings">Мої бронювання</Nav.Link>}
                 </Nav>
                 <Nav>
