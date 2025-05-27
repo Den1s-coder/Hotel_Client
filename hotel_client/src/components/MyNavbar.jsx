@@ -1,6 +1,7 @@
 ﻿import { Navbar as BootstrapNavbar, Container, Nav, Button } from 'react-bootstrap';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 const MyNavbar = () => {
     const { userEmail, setUserEmail } = useContext(AuthContext);
@@ -13,10 +14,10 @@ const MyNavbar = () => {
     return (
         <BootstrapNavbar bg="primary" data-bs-theme="dark">
             <Container>
-                <BootstrapNavbar.Brand href="/">Готель</BootstrapNavbar.Brand>
+                <BootstrapNavbar.Brand as={Link} to="/">Готель</BootstrapNavbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link href="/rooms">Кімнати</Nav.Link>
-                    {userEmail && <Nav.Link href="/bookings">Мої бронювання</Nav.Link>}
+                    {userEmail && <Nav.Link as={Link} to="/MyBookings">Мої бронювання</Nav.Link>}
                 </Nav>
                 <Nav>
                     {userEmail ? (
