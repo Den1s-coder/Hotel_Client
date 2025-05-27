@@ -5,11 +5,8 @@ import { Link } from 'react-router-dom';
 
 const MyNavbar = () => {
     const { userEmail, setUserEmail } = useContext(AuthContext);
-
-    const logout = () => {
-        document.cookie = "wery_good_cookies";
-        setUserEmail(null);
-    };
+    const { userRole, setUserRole } = useContext(AuthContext);
+    const { logout } = useContext(AuthContext);
 
     return (
         <BootstrapNavbar bg="primary" data-bs-theme="dark">
@@ -18,6 +15,7 @@ const MyNavbar = () => {
                 <Nav className="me-auto">
                     <Nav.Link as={Link} to="/rooms">Кімнати</Nav.Link>
                     {userEmail && <Nav.Link as={Link} to="/MyBookings">Мої бронювання</Nav.Link>}
+                    {userRole === "Admin" && <Nav.Link href="/admin">Адмін-панель</Nav.Link>}
                 </Nav>
                 <Nav>
                     {userEmail ? (
