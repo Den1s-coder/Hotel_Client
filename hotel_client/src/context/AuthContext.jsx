@@ -5,25 +5,41 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [userEmail, setUserEmail] = useState(null);
+    const [userRole, setUserRole] = useState(null);
 
     const fetchUser = async () => {
         try {
             const res = await axios.get("http://localhost:5007/api/user/me", {
-                withCredentials: true, 
+                withCredentials: true,
             });
             setUserEmail(res.data.email);
+            setUserRole(res.data.role)
         } catch (err) {
-            console.error( err);
+            console.error(err);
+            setUserEmail(null);
+            setUserRole(null);
         }
     };
 
-    useEffect(() => {
-        fetchUser();
-    }, []);
+    const logout = async () => {
+        try {
+            await axios.post("http://localhost:5007/api/auth/logout"), {
+                withCredentials: true,
+            };
+            setUserEmail(null);
+            setUserRole(null);
+        } catch (err) {
+            console.error("Logout error:", err);
+        }
+    }
 
-    return (
-        <AuthContext.Provider value={{ userEmail, setUserEmail }}>
-            {children}
-        </AuthContext.Provider>
-    );
+        useEffect(() => {
+            fetchUser();
+        }, []);
+
+        return (
+            <AuthContext.Provider value={{ userEmail, setUserEmail, userRole, setUserRole, logout }}>
+                {children}
+            </AuthContext.Provider>
+        );
 };
