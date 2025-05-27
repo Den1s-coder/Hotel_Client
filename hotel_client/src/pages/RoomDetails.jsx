@@ -31,10 +31,11 @@ const RoomDetails = () => {
                 checkInDate: checkInUtc,
                 checkOutDate: checkOutUtc
             });
-            alert("Кімнату заброньовано успішно!");
+                alert("Кімнату заброньовано успішно!");
         } catch (err) {
-            console.error("Помилка бронювання:", err);
-            alert("Бронювання не вдалося");
+            {
+                alert("Ця кімната вже заброньована на вказаний період.");
+            }
         }
     };
 
