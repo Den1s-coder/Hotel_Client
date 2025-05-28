@@ -1,0 +1,109 @@
+.select-room-container {
+    max-width: 700px;
+    margin: auto;
+    padding: 2rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.6em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.room-list {
+    list-style: none;
+    padding: 0;
+}
+
+.room-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Додаємо це */
+    padding: 0.6em;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    background-color: #f9f9f9;
+}
+
+.room-item button {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.room-item button.update-button {
+    background-color: #007bff;
+    color: white;
+    margin-right: 10px;
+}
+
+.room-item button.update-button:hover {
+    background-color: #0056b3;
+}
+
+.room-item button.delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.room-item button.delete-button:hover {
+    background-color: #a71d2a;
+}
+
+.room-info {
+    flex: 1; /* Займає весь доступний простір */
+}
+
+.room-actions {
+    display: flex;
+    gap: 6px;
+}
+
+    .room-actions button {
+        font-size: 0.85rem;
+        padding: 4px 10px;
+    }
+
+.select-room-container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.select-room-container .actions {
+    display: flex;
+    gap: 10px;
+}
+
+    .select-room-container .actions button {
+        padding: 5px 10px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+    }
+
+.action-btn.add {
+    background-color: #28a745;
+    color: white;
+}
+
+.action-btn.update {
+    background-color: #007bff;
+    color: white;
+}
+
+.action-btn.bookings {
+    background-color: #6c757d;
+    color: white;
+}
+
+
