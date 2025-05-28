@@ -1,7 +1,7 @@
 ﻿import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import http from '../api/http';
-import { AuthContext } from '../context/AuthContext';
+import http from '../../api/http';
+import { AuthContext } from '../../context/AuthContext';
 import "./MyBookings.css";
 
 export default function MyBookings() {
@@ -50,7 +50,7 @@ export default function MyBookings() {
     if (!userEmail) {
         return (
             <div className="my-container">
-                <div className="alert error">Будь ласка, увійдіть в систему для перегляду бронювань</div>
+                <div className="alert error">Please log in to view reservations.</div>
             </div>
         );
     }
@@ -58,7 +58,7 @@ export default function MyBookings() {
     if (loading) {
         return (
             <div className="my-container">
-                <div className="loading">Завантаження...</div>
+                <div className="loading">Loading...</div>
             </div>
         );
     }
@@ -73,32 +73,27 @@ export default function MyBookings() {
 
     return (
         <div className="my-container">
-            <h2>Мої бронювання</h2>
+            <h2>My bookings</h2>
             {bookings.length === 0 ? (
-                <div className="alert info">У вас немає активних бронювань</div>
+                <div className="alert info">You have no active reservations.</div>
             ) : (
                 <table className="my-table">
                     <thead>
                         <tr>
-                            <th>Номер</th>
-                            <th>Дата заїзду</th>
-                            <th>Дата виїзду</th>
-                            <th>Дії</th>
+                            <th>Number</th>
+                            <th>Check-in date</th>
+                            <th>Check-out date</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {bookings.map((booking) => (
                             <tr key={booking.id}>
-                                <td>{booking.roomId}</td>
+                                <td>{booking.room.number}</td>
                                 <td>{booking.checkInDate ? new Date(booking.checkInDate).toLocaleDateString() : "—"}</td>
                                 <td>{booking.checkOutDate ? new Date(booking.checkOutDate).toLocaleDateString() : "—"}</td>
                                 <td>
-                                    <button
-                                        className="cancel-btn"
-                                        onClick={() => handleCancel(booking.id)}
-                                    >
-                                        Скасувати
-                                    </button>
+                                    <button className="cancel-btn" onClick={() => handleCancel(booking.id)}>Cancel</button>
                                 </td>
                             </tr>
                         ))}
