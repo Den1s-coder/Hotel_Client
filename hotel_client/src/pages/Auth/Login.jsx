@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
-import http from '../api/http';
+import http from '../../api/http';;
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import "./Login.css";
 
 export default function Login() {
@@ -23,7 +23,7 @@ export default function Login() {
     return (
         <div className="login-container">
             <div className="login-box">
-                <h2>¬х≥д</h2>
+                <h2>Login</h2>
                 <input
                     type="text"
                     placeholder="Email"
@@ -32,11 +32,11 @@ export default function Login() {
                 />
                 <input
                     type="password"
-                    placeholder="ѕароль"
+                    placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button onClick={() => handleLogin(email, password)}>”в≥йти</button>
+                <button onClick={() => handleLogin(email, password)}>Sign in</button>
             </div>
         </div>
     );

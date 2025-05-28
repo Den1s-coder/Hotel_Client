@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import http from "../api/http";
+import http from '../../api/http';;
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
@@ -24,11 +24,11 @@ function Register() {
     return (
         <div className="register-wrapper">
             <div className="register-form">
-                <h1>Реєстрація</h1>
+                <h1>Register</h1>
                 <form onSubmit={handleSubmit}>
                     <input
                         name="name"
-                        placeholder="Ім'я"
+                        placeholder="Name"
                         value={form.name}
                         onChange={handleChange}
                     />
@@ -41,12 +41,12 @@ function Register() {
                     />
                     <input
                         name="password"
-                        placeholder="Пароль"
+                        placeholder="Password"
                         type="password"
                         value={form.password}
                         onChange={handleChange}
                     />
-                    <button type="submit">Зареєструватися</button>
+                    <button type="submit">Sign up</button>
                 </form>
             </div>
         </div>
