@@ -1,12 +1,14 @@
 ﻿import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import http from "../api/http";
+import "./RoomDetails.css";
 
 const RoomDetails = () => {
     const { id } = useParams();
     const [room, setRoom] = useState(null);
     const [checkIn, setCheckInDate] = useState("");
     const [checkOut, setCheckOutDate] = useState("");
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchRoom = async () => {
@@ -14,7 +16,11 @@ const RoomDetails = () => {
                 const res = await http.get(`/api/rooms/${id}`);
                 setRoom(res.data);
             } catch (err) {
-                console.error("Помилка завантаження кімнати:", err);
+                if (err.response?.status === 401) {
+                    navigate('/login');
+                } else {
+                    console.error("Room loading error:", err);
+                }
             }
         };
 
@@ -31,10 +37,13 @@ const RoomDetails = () => {
                 checkInDate: checkInUtc,
                 checkOutDate: checkOutUtc
             });
-                alert("Кімнату заброньовано успішно!");
+                alert("The room has been booked successfully!");
         } catch (err) {
+            if (err.response?.status === 401) {
+                navigate('/login');
+            } else
             {
-                alert("Ця кімната вже заброньована на вказаний період.");
+                alert("This room is already booked for the specified period..");
             }
         }
     };
@@ -42,36 +51,31 @@ const RoomDetails = () => {
     if (!room) return <p>Завантаження...</p>;
 
     return (
-        <div className="p-4 max-w-xl mx-auto">
-            <h2 className="text-2xl font-bold">{room.type}</h2>
-            <img src={`http://localhost:5007${room.image}`} alt="room" width="200" />
-            <p>Номер: {room.number}</p>
-            <p>Ціна за ніч: {room.pricePerNight}₴</p>
-            <p>Статус: {room.isAvailable ? "Доступна" : "Зайнята"}</p>
+        <div className="room-details-wrapper">
+            <div className="room-details-card">
+                <h2>{room.type}</h2>
+                <img src={`http://localhost:5007${room.image}`} alt="room" />
+                <p><strong>Number:</strong> {room.number}</p>
+                <p><strong>Price per night:</strong> {room.pricePerNight}₴</p>
+                <p><strong>Status:</strong> {room.isAvailable ? "Available" : "Busy"}</p>
 
-            <div className="mt-4">
-                <label>Дата заїзду:</label>
-                <input
-                    type="date"
-                    className="block w-full p-2 border rounded my-2"
-                    value={checkIn}
-                    onChange={(e) => setCheckInDate(e.target.value)}
-                />
+                <div className="booking-form">
+                    <label>Check-in date:</label>
+                    <input
+                        type="date"
+                        value={checkIn}
+                        onChange={(e) => setCheckInDate(e.target.value)}
+                    />
 
-                <label>Дата виїзду:</label>
-                <input
-                    type="date"
-                    className="block w-full p-2 border rounded my-2"
-                    value={checkOut}
-                    onChange={(e) => setCheckOutDate(e.target.value)}
-                />
+                    <label>Check-out date:</label>
+                    <input
+                        type="date"
+                        value={checkOut}
+                        onChange={(e) => setCheckOutDate(e.target.value)}
+                    />
 
-                <button
-                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-                    onClick={handleBooking}
-                >
-                    Забронювати
-                </button>
+                    <button onClick={handleBooking}>Reserve</button>
+                </div>
             </div>
         </div>
     );

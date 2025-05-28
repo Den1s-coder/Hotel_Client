@@ -11,22 +11,22 @@ const MyNavbar = () => {
     return (
         <BootstrapNavbar bg="primary" data-bs-theme="dark">
             <Container>
-                <BootstrapNavbar.Brand as={Link} to="/">Готель</BootstrapNavbar.Brand>
+                <BootstrapNavbar.Brand as={Link} to="/">Hotel</BootstrapNavbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link as={Link} to="/rooms">Кімнати</Nav.Link>
-                    {userEmail && <Nav.Link as={Link} to="/MyBookings">Мої бронювання</Nav.Link>}
-                    {userRole === "Admin" && <Nav.Link href="/admin">Адмін-панель</Nav.Link>}
+                    <Nav.Link as={Link} to="/">Rooms</Nav.Link>
+                    {userEmail && <Nav.Link as={Link} to="/MyBookings">My booking</Nav.Link>}
+                    {userRole === "Admin" && <Nav.Link href="/allrooms">Admin-panel</Nav.Link>}
                 </Nav>
                 <Nav>
                     {userEmail ? (
                         <>
                             <span className="navbar-text text-white me-2">{userEmail}</span>
-                            <Button variant="outline-light" onClick={logout}>Вийти</Button>
+                            <Button variant="outline-light" onClick={logout}>Log out</Button>
                         </>
                     ) : (
                         <>
-                            <Nav.Link href="/login">Логін</Nav.Link>
-                            <Nav.Link href="/">Реєстрація</Nav.Link>
+                            <Nav.Link href="/login">Log in</Nav.Link>
+                            <Nav.Link href="/register">Register</Nav.Link>
                         </>
                     )}
                 </Nav>

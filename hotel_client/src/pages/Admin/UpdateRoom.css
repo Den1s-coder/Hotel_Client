@@ -1,0 +1,53 @@
+.update-room-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.update-room-container h2 {
+    font-size: 24px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.update-room-form label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    color: #333;
+}
+
+.update-room-form input[type="text"],
+.update-room-form input[type="number"],
+.update-room-form input[type="file"] {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.update-room-form button {
+    background-color: #1a73e8;
+    color: white;
+    padding: 0.8rem 1.6rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.update-room-form button:hover {
+    background-color: #0d60c4;
+}
+
+.update-room-form img {
+    max-width: 200px;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
