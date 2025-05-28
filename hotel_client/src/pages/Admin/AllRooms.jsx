@@ -32,6 +32,10 @@ function AllRooms() {
         }
     };
 
+    const handleUpdate = (id) => {
+        navigate(`/update-room/${id}`);
+    };
+
     const filteredRooms = rooms.filter(room =>
         room.number.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -65,8 +69,8 @@ function AllRooms() {
                                 Room №{room.number} — {room.type}
                             </div>
                             <div className="room-actions">
-                                <button className="update-button">Update</button>
-                                <button className="delete-button">Delete</button>
+                                <button className="update-button" onClick={() => handleUpdate(room.id)}>Update</button>
+                                <button className="delete-button" onClick={() => handleDelete(room.id)}>Delete</button>
                             </div>
                         </li>
                     ))}

@@ -20,9 +20,10 @@
 }
 
 .room-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Додаємо це */
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    width: 100%;
     padding: 0.6em;
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -30,36 +31,9 @@
     background-color: #f9f9f9;
 }
 
-.room-item button {
-    padding: 4px 8px;
-    border: none;
-    border-radius: 8px;
-    font-weight: 400;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.room-item button.update-button {
-    background-color: #007bff;
-    color: white;
-    margin-right: 10px;
-}
-
-.room-item button.update-button:hover {
-    background-color: #0056b3;
-}
-
-.room-item button.delete-button {
-    background-color: #dc3545;
-    color: white;
-}
-
-.room-item button.delete-button:hover {
-    background-color: #a71d2a;
-}
-
 .room-info {
-    flex: 1; /* Займає весь доступний простір */
+    flex-grow: 1;
+    font-size: 1.1em;
 }
 
 .room-actions {
@@ -70,12 +44,38 @@
     .room-actions button {
         font-size: 0.85rem;
         padding: 4px 10px;
+        font-weight: 500;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        transition: background-color 0.2s ease;
+    }
+
+.room-item button.update-button {
+    background-color: #007bff;
+    color: white;
+}
+
+    .room-item button.update-button:hover {
+        background-color: #0056b3;
+    }
+
+.room-item button.delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+    .room-item button.delete-button:hover {
+        background-color: #a71d2a;
     }
 
 .select-room-container .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
 }
 
 .select-room-container .actions {
@@ -105,5 +105,3 @@
     background-color: #6c757d;
     color: white;
 }
-
-
