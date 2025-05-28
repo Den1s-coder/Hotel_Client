@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import http from '../api/http';
 import { AuthContext } from '../context/AuthContext';
-import { Table, Button, Container, Alert } from 'react-bootstrap';
+import "./MyBookings.css";
 
 export default function MyBookings() {
     const navigate = useNavigate();
@@ -49,31 +49,35 @@ export default function MyBookings() {
 
     if (!userEmail) {
         return (
-            <Container className="mt-5">
-                <Alert variant="danger">Будь ласка, увійдіть в систему для перегляду бронювань</Alert>
-            </Container>
+            <div className="my-container">
+                <div className="alert error">Будь ласка, увійдіть в систему для перегляду бронювань</div>
+            </div>
         );
     }
 
     if (loading) {
-        return <Container className="mt-5">Завантаження...</Container>;
+        return (
+            <div className="my-container">
+                <div className="loading">Завантаження...</div>
+            </div>
+        );
     }
 
     if (error) {
         return (
-            <Container className="mt-5">
-                <Alert variant="danger">{error}</Alert>
-            </Container>
+            <div className="my-container">
+                <div className="alert error">{error}</div>
+            </div>
         );
     }
 
     return (
-        <Container className="mt-5">
+        <div className="my-container">
             <h2>Мої бронювання</h2>
             {bookings.length === 0 ? (
-                <Alert variant="info">У вас немає активних бронювань</Alert>
+                <div className="alert info">У вас немає активних бронювань</div>
             ) : (
-                <Table striped bordered hover>
+                <table className="my-table">
                     <thead>
                         <tr>
                             <th>Номер</th>
@@ -83,30 +87,24 @@ export default function MyBookings() {
                         </tr>
                     </thead>
                     <tbody>
-                        {bookings.map(booking => (
+                        {bookings.map((booking) => (
                             <tr key={booking.id}>
                                 <td>{booking.roomId}</td>
+                                <td>{booking.checkInDate ? new Date(booking.checkInDate).toLocaleDateString() : "—"}</td>
+                                <td>{booking.checkOutDate ? new Date(booking.checkOutDate).toLocaleDateString() : "—"}</td>
                                 <td>
-                                    {booking.checkInDate ? new Date(booking.checkInDate).toLocaleDateString() : '—'}
-                                </td>
-                                <td>
-                                    {booking.checkOutDate ? new Date(booking.checkOutDate).toLocaleDateString() : '—'}
-                                </td>
-                                <td>
-                                    <Button
-                                        variant="danger"
-                                        size="sm"
+                                    <button
+                                        className="cancel-btn"
                                         onClick={() => handleCancel(booking.id)}
-                                        disabled={booking.status !== 'Active'}
                                     >
                                         Скасувати
-                                    </Button>
+                                    </button>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
-                </Table>
+                </table>
             )}
-        </Container>
+        </div>
     );
 }

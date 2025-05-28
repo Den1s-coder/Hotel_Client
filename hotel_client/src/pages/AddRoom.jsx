@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./AddRoom.css";
 
 export default function AddRoom() {
     const [number, setNumber] = useState("");
@@ -41,28 +42,28 @@ export default function AddRoom() {
     };
 
     return (
-        <div style={{ maxWidth: 600, margin: "auto" }}>
-            <h2>Add room</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Number:</label>
+        <div className="form-container">
+            <h2>Додати кімнату</h2>
+            <form onSubmit={handleSubmit} className="form">
+                <div className="form-group">
+                    <label>Номер:</label>
                     <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} required />
                 </div>
-                <div>
-                    <label>Type:</label>
+                <div className="form-group">
+                    <label>Тип:</label>
                     <input type="text" value={type} onChange={(e) => setType(e.target.value)} required />
                 </div>
-                <div>
-                    <label>Price:</label>
+                <div className="form-group">
+                    <label>Ціна:</label>
                     <input type="number" value={pricePerNight} onChange={(e) => setPricePerNight(e.target.value)} required />
                 </div>
-                <div>
-                    <label>Image:</label>
+                <div className="form-group">
+                    <label>Зображення:</label>
                     <input type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} required />
                 </div>
-                <button type="submit">Add</button>
+                <button type="submit" className="submit-btn">Додати</button>
             </form>
-            {message && <p>{message}</p>}
+            {message && <p className="message">{message}</p>}
         </div>
     );
 }

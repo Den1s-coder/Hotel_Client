@@ -1,0 +1,51 @@
+.register-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+/* Стилі форми */
+.register-form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.register-form h1 {
+   text-align: center;
+   margin-bottom: 20px;
+   font-size: 24px;
+}
+
+.register-form form {
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+}
+
+.register-form input {
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   font-size: 16px;
+}
+
+.register-form button {
+   padding: 10px;
+   background-color: #3b82f6;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.register-form button:hover {
+    background-color: #2563eb;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import http from "../api/http";
 import { useNavigate } from "react-router-dom";
+import "./Register.css";
 
 function Register() {
     const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -21,36 +22,33 @@ function Register() {
     };
 
     return (
-        <div className="p-4 max-w-md mx-auto">
-            <h1 className="text-xl font-bold mb-4">Register</h1>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <input
-                    name="name"
-                    placeholder="Name"
-                    value={form.name}
-                    onChange={handleChange}
-                    className="border p-2 rounded"
-                />
-                <input
-                    name="email"
-                    placeholder="Email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    className="border p-2 rounded"
-                />
-                <input
-                    name="password"
-                    placeholder="Password"
-                    type="password"
-                    value={form.password}
-                    onChange={handleChange}
-                    className="border p-2 rounded"
-                />
-                <button type="submit" className="bg-blue-500 text-white py-2 rounded">
-                    Register
-                </button>
-            </form>
+        <div className="register-wrapper">
+            <div className="register-form">
+                <h1>Реєстрація</h1>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        name="name"
+                        placeholder="Ім'я"
+                        value={form.name}
+                        onChange={handleChange}
+                    />
+                    <input
+                        name="email"
+                        placeholder="Email"
+                        type="email"
+                        value={form.email}
+                        onChange={handleChange}
+                    />
+                    <input
+                        name="password"
+                        placeholder="Пароль"
+                        type="password"
+                        value={form.password}
+                        onChange={handleChange}
+                    />
+                    <button type="submit">Зареєструватися</button>
+                </form>
+            </div>
         </div>
     );
 }
