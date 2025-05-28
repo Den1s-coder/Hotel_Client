@@ -10,7 +10,7 @@ const UpdateRoom = () => {
     const [number, setNumber] = useState("");
     const [type, setType] = useState("");
     const [pricePerNight, setPricePerNight] = useState("");
-    const [capasity, setCapasity] = useState("");
+    const [capacity, setCapacity] = useState("");
     const [image, setImage] = useState(null);
     const [existingImage, setExistingImage] = useState("");
     const [message, setMessage] = useState("");
@@ -23,7 +23,7 @@ const UpdateRoom = () => {
                 setNumber(room.number);
                 setType(room.type);
                 setPricePerNight(room.pricePerNight);
-                setCapasity(room.capasity);
+                setCapacity(room.capacity);
                 setExistingImage(room.image);
             } catch (err) {
                 console.error(err);
@@ -40,7 +40,7 @@ const UpdateRoom = () => {
         formData.append("Number", number);
         formData.append("Type", type);
         formData.append("PricePerNight", pricePerNight);
-        formData.append("Capasity", capasity);
+        formData.append("Capacity", capacity);
         if (image) {
             formData.append("Image", image); 
         }
@@ -84,8 +84,8 @@ const UpdateRoom = () => {
                 <label>Capasity:</label>
                 <input
                     type="number"
-                    value={capasity || ""}
-                    onChange={(e) => setCapasity(e.target.value)}
+                    value={capacity || ""}
+                    onChange={(e) => setCapacity(e.target.value)}
                     required
                 />
 
