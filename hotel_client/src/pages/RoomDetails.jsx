@@ -1,5 +1,5 @@
 ﻿import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import http from "../api/http";
 import "./RoomDetails.css";
 
@@ -8,6 +8,7 @@ const RoomDetails = () => {
     const [room, setRoom] = useState(null);
     const [checkIn, setCheckInDate] = useState("");
     const [checkOut, setCheckOutDate] = useState("");
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchRoom = async () => {
@@ -15,7 +16,11 @@ const RoomDetails = () => {
                 const res = await http.get(`/api/rooms/${id}`);
                 setRoom(res.data);
             } catch (err) {
-                console.error("Помилка завантаження кімнати:", err);
+                if (err.response?.status === 401) {
+                    navigate('/login');
+                } else {
+                    console.error("Room loading error:", err);
+                }
             }
         };
 
@@ -32,10 +37,13 @@ const RoomDetails = () => {
                 checkInDate: checkInUtc,
                 checkOutDate: checkOutUtc
             });
-                alert("Кімнату заброньовано успішно!");
+                alert("The room has been booked successfully!");
         } catch (err) {
+            if (err.response?.status === 401) {
+                navigate('/login');
+            } else
             {
-                alert("Ця кімната вже заброньована на вказаний період.");
+                alert("This room is already booked for the specified period..");
             }
         }
     };
@@ -47,26 +55,26 @@ const RoomDetails = () => {
             <div className="room-details-card">
                 <h2>{room.type}</h2>
                 <img src={`http://localhost:5007${room.image}`} alt="room" />
-                <p><strong>Номер:</strong> {room.number}</p>
-                <p><strong>Ціна за ніч:</strong> {room.pricePerNight}₴</p>
-                <p><strong>Статус:</strong> {room.isAvailable ? "Доступна" : "Зайнята"}</p>
+                <p><strong>Number:</strong> {room.number}</p>
+                <p><strong>Price per night:</strong> {room.pricePerNight}₴</p>
+                <p><strong>Status:</strong> {room.isAvailable ? "Available" : "Busy"}</p>
 
                 <div className="booking-form">
-                    <label>Дата заїзду:</label>
+                    <label>Check-in date:</label>
                     <input
                         type="date"
                         value={checkIn}
                         onChange={(e) => setCheckInDate(e.target.value)}
                     />
 
-                    <label>Дата виїзду:</label>
+                    <label>Check-out date:</label>
                     <input
                         type="date"
                         value={checkOut}
                         onChange={(e) => setCheckOutDate(e.target.value)}
                     />
 
-                    <button onClick={handleBooking}>Забронювати</button>
+                    <button onClick={handleBooking}>Reserve</button>
                 </div>
             </div>
         </div>
