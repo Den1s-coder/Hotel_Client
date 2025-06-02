@@ -62,3 +62,78 @@ h2 {
     background-color: #aaa;
     cursor: not-allowed;
 }
+
+.booking-calendar-container {
+    padding: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.booking-calendar-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.rbc-time-gutter {
+    display: none !important;
+}
+
+/* Убираем горизонтальные линии времени */
+.rbc-time-content {
+    display: none !important;
+}
+
+/* Корректируем отступы */
+.rbc-time-view {
+    min-height: auto !important;
+}
+
+/* Делаем события "полноразмерными" в днях */
+.rbc-day-slot .rbc-events-container {
+    margin: 0 !important;
+    min-height: 100% !important;
+}
+
+/* Убираем время внутри событий */
+.rbc-event-content {
+    font-size: 12px;
+    white-space: normal !important;
+    overflow: visible !important;
+}
+
+.rbc-toolbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    padding: 0.5rem;
+}
+
+/* Групи кнопок */
+.rbc-btn-group {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+}
+
+/* Кнопки */
+.rbc-toolbar button {
+    font-size: 12px;
+    padding: 4px 8px;
+    margin: 2px;
+}
+
+/* Назва місяця */
+.rbc-toolbar-label {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
