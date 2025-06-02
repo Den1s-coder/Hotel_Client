@@ -10,6 +10,7 @@ import UpdateRoom from "./pages/Admin/UpdateRoom";
 import AllRooms from "./pages/Admin/AllRooms";
 import AllBookings from "./pages/Admin/AllBookings";
 import ChangePrices from "./pages/Admin/ChangePrices";
+import BookingsAnalytics from "./pages/Admin/BookingsAnalytics";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/update-price" element={<ChangePrices />} />
                 <Route path="/allrooms" element={<AllRooms />} />
                 <Route path="/allbookings" element={<AllBookings />} />
+                <Route path="/bookingsanalytics" element={<BookingsAnalytics />} />
             </Routes>
         </BrowserRouter>
     );
