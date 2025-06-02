@@ -48,6 +48,7 @@ function AllRooms() {
                     <button className="action-btn add" onClick={() => navigate("/add-room")}>➕ Add Room</button>
                     <button className="action-btn update" onClick={() => navigate("/update-price")}>Update price</button>
                     <button className="action-btn booking" onClick={() => navigate("/allbookings")}>📄 All Bookings</button>
+                    <button className="action-btn analytics" onClick={() => navigate("/bookingsanalytics")}>Booking analytics by day</button>
                 </div>
             </div>
             <input

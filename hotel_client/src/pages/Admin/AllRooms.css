@@ -41,33 +41,33 @@
     gap: 6px;
 }
 
-    .room-actions button {
-        font-size: 0.85rem;
-        padding: 4px 10px;
-        font-weight: 500;
-        cursor: pointer;
-        border: none;
-        border-radius: 8px;
-        transition: background-color 0.2s ease;
-    }
+.room-actions button {
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
 
 .room-item button.update-button {
     background-color: #007bff;
     color: white;
 }
 
-    .room-item button.update-button:hover {
-        background-color: #0056b3;
-    }
+.room-item button.update-button:hover {
+    background-color: #0056b3;
+}
 
 .room-item button.delete-button {
     background-color: #dc3545;
     color: white;
 }
 
-    .room-item button.delete-button:hover {
-        background-color: #a71d2a;
-    }
+.room-item button.delete-button:hover {
+   background-color: #a71d2a;
+}
 
 .select-room-container .header {
     display: flex;
@@ -83,13 +83,13 @@
     gap: 10px;
 }
 
-    .select-room-container .actions button {
-        padding: 5px 10px;
-        font-weight: bold;
-        cursor: pointer;
-        border: none;
-        border-radius: 8px;
-    }
+.select-room-container .actions button {
+   padding: 5px 10px;
+   font-weight: bold;
+   cursor: pointer;
+   border: none;
+   border-radius: 8px;
+}
 
 .action-btn.add {
     background-color: #28a745;
@@ -97,11 +97,16 @@
 }
 
 .action-btn.update {
-    background-color: #007bff;
+    background-color: #06bdb7;
     color: white;
 }
 
 .action-btn.bookings {
     background-color: #6c757d;
+    color: white;
+}
+
+.action-btn.analytics {
+    background-color: #bdba06;
     color: white;
 }
