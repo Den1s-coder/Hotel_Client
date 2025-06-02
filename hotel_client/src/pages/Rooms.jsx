@@ -66,7 +66,7 @@ const Rooms = () => {
                         type="number"
                         value={maxPrice}
                         onChange={(e) => setMaxPrice(e.target.value)}
-                        placeholder="Максимальна ціна"
+                        placeholder="Max. price"
                     />
 
                     <label>Peoples capasity:</label>
@@ -74,14 +74,14 @@ const Rooms = () => {
                         type="number"
                         value={capacity}
                         onChange={(e) => setCapacity(e.target.value)}
-                        placeholder="Максимальна ціна"
+                        placeholder="Peoplec count"
                     />
 
                     <button onClick={fetchAvailableRooms}>🔍 Search</button>
                 </div>
 
                 <div className="room-list-section">
-                    <h2 className="section-title">Кімнати</h2>
+                    <h2 className="section-title">Rooms</h2>
                     <div className="room-list">
                         {rooms.map(room => (
                             <div className="room-card" key={room.id}>
