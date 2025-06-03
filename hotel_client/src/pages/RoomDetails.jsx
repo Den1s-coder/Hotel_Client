@@ -8,6 +8,7 @@ const RoomDetails = () => {
     const [room, setRoom] = useState(null);
     const [checkIn, setCheckInDate] = useState("");
     const [checkOut, setCheckOutDate] = useState("");
+    const [message, setMessage] = useState("");
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -37,13 +38,13 @@ const RoomDetails = () => {
                 checkInDate: checkInUtc,
                 checkOutDate: checkOutUtc
             });
-                alert("The room has been booked successfully!");
+            setMessage("The room has been booked successfully!");
         } catch (err) {
             if (err.response?.status === 401) {
                 navigate('/login');
             } else
             {
-                alert("This room is already booked for the specified period..");
+            setMessage("This room is already booked for the specified period..");
             }
         }
     };
@@ -76,6 +77,7 @@ const RoomDetails = () => {
 
                     <button onClick={handleBooking}>Reserve</button>
                 </div>
+                {message && <p className="message">{message}</p>}
             </div>
         </div>
     );
