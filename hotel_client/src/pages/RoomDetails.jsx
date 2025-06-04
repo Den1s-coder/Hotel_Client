@@ -49,7 +49,7 @@ const RoomDetails = () => {
         }
     };
 
-    if (!room) return <p>Завантаження...</p>;
+    if (!room) return <p>Loading...</p>;
 
     return (
         <div className="room-details-wrapper">
