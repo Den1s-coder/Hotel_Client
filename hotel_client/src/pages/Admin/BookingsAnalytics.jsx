@@ -43,7 +43,6 @@ export default function BookingsAnalytics() {
         }
     };
 
-    // Автоматичне завантаження при першому відкритті
     useEffect(() => {
         fetchData();
     }, []);
