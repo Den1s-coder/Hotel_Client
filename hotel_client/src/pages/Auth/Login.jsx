@@ -15,8 +15,12 @@ export default function Login() {
             const response = await http.post('/api/Auth/login', { email, password });
             setUserEmail(email);
             navigate('/');
-        } catch (error) {
-            alert(error);
+        } catch (err) {
+            if (err.response && err.response.data) {
+                alert("Error: " + err.response.data);
+            } else {
+                alert("Unexpected error occurred.");
+            }
         }
     };
 
