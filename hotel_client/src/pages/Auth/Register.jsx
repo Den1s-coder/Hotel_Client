@@ -17,7 +17,11 @@ function Register() {
             await http.post("/api/Auth/register", form);
             navigate("/login");
         } catch (err) {
-            alert("Error: " + err);
+            if (err.response && err.response.data) {
+                alert("Error: " + err.response.data); 
+            } else {
+                alert("Unexpected error occurred.");
+            }
         }
     };
 
