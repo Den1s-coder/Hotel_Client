@@ -28,7 +28,7 @@ function AllRooms() {
             });
             setRooms(rooms.filter(b => b.id !== roomId));
         } catch (err) {
-            console.error(err);
+            alert("The room has a reservation.");
         }
     };
 
